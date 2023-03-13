@@ -1,5 +1,6 @@
 ﻿using Biblio_DOMAIN.Entities;
 using Biblio_DOMAIN.Entities.DB;
+using Biblio_DOMAIN.Entities.VIewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace Biblio_BLL.Interfaces
 {
     public interface IUserService
     {
-        Task<BaseResponse<IEnumerable<User>>> GetAllUsers();
+        Task<BaseResponse<IEnumerable<UserViewModel>>> GetAllUsers();
     }
 }

@@ -2,6 +2,7 @@
 using Biblio_DAL.Interfaces;
 using Biblio_DOMAIN.Entities;
 using Biblio_DOMAIN.Entities.DB;
+using Biblio_DOMAIN.Entities.VIewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace Biblio_BLL.Implementations
@@ -15,13 +16,24 @@ namespace Biblio_BLL.Implementations
             _userRepository = userRepository;
         }
 
-        public async Task<BaseResponse<IEnumerable<User>>> GetAllUsers()
+        public async Task<BaseResponse<IEnumerable<UserViewModel>>> GetAllUsers()
         {
             try
             {
-                var users = await _userRepository.GetAll().ToListAsync();
+                var users = await _userRepository.GetAll().Select(u => new UserViewModel()
+                {
+                    Id = u.Id,
+                    Description = u.Description,
+                    UserName = u.UserName,
+                    Location = new LocationViewModel()
+                    {
+                        Country = u.Location.Country,
+                        City = u.Location.City,
+                    },
+                    Followed = u.Followed
+                }).ToListAsync();
 
-                return new BaseResponse<IEnumerable<User>>
+                return new BaseResponse<IEnumerable<UserViewModel>>
                 {
                     Data = users,
                     Status = Biblio_DOMAIN.Entities.Enum.ResponseStatus.Ok
@@ -29,7 +41,7 @@ namespace Biblio_BLL.Implementations
             }
             catch(Exception ex)
             {
-                return new BaseResponse<IEnumerable<User>>
+                return new BaseResponse<IEnumerable<UserViewModel>>
                 {
                     Descriptions = $"[GetAllUsers]: {ex.Message}",
                     Status = Biblio_DOMAIN.Entities.Enum.ResponseStatus.Ok

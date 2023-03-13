@@ -38,7 +38,7 @@ namespace Biblio_DAL
                 entity.Property(u => u.Id).HasColumnName("Id");
                 entity.Property(u => u.UserName).HasColumnName("UserName");
                 entity.Property(u => u.Description).HasColumnName("Description");
-                entity.Property(u => u.LocationId).HasColumnName("Location");
+                entity.Property(u => u.LocationId).HasColumnName("LocationId");
                 entity.Property(u => u.Followed).HasColumnName("Followed");
 
                 entity.HasOne(u => u.Location)
