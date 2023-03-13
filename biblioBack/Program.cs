@@ -1,3 +1,8 @@
+using Biblio_DAL;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+
 namespace biblioBack
 {
     public class Program
@@ -11,6 +16,9 @@ namespace biblioBack
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
             var app = builder.Build();
 

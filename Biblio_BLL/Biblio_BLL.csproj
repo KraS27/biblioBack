@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BIBLIO_DAL\Biblio_DAL\Biblio_DAL.csproj" />
+    <ProjectReference Include="..\Biblio_DOMAIN\Biblio_DOMAIN.csproj" />
+  </ItemGroup>
+
 </Project>

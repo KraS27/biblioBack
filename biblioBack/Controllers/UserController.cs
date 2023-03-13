@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Biblio_BLL.Interfaces;
+using Biblio_DOMAIN.Entities.DB;
+using Microsoft.AspNetCore.Mvc;
 
 namespace biblioBack.Controllers
 {
@@ -7,10 +9,18 @@ namespace biblioBack.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {     
-        [HttpGet("GetUsers")]
-        public IEnumerable<string> GetUsers()
+        private readonly IUserService _userService;
+
+        public UserController(IUserService userService)
         {
-            return new List<string> { "Sasha", "Pasha", "Dasha", "Kasha" };
+            _userService = userService;
+        }
+
+        [HttpGet("GetUsers")]
+        public async Task<IEnumerable<User>> GetUsersAsync()
+        {
+            var users = await _userService.GetAllUsers();
+            return users.Data;
         }
     }
 }
