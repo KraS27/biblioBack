@@ -21,6 +21,7 @@ namespace biblioBack
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddCors();
 
             //Db Connection
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -30,6 +31,7 @@ namespace biblioBack
             builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
+            app.UseCors(builder => builder.AllowAnyOrigin());
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -37,7 +39,7 @@ namespace biblioBack
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+           
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
