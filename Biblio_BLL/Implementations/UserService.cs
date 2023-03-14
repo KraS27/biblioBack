@@ -43,8 +43,9 @@ namespace Biblio_BLL.Implementations
             {
                 return new BaseResponse<IEnumerable<UserViewModel>>
                 {
+                    Data = null,
                     Descriptions = $"[GetAllUsers]: {ex.Message}",
-                    Status = Biblio_DOMAIN.Entities.Enum.ResponseStatus.Ok
+                    Status = Biblio_DOMAIN.Entities.Enum.ResponseStatus.InternalServerError
                 };
             }
         }

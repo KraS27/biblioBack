@@ -1,4 +1,5 @@
 ﻿using Biblio_BLL.Interfaces;
+using Biblio_DOMAIN.Entities;
 using Biblio_DOMAIN.Entities.DB;
 using Biblio_DOMAIN.Entities.VIewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -18,10 +19,9 @@ namespace biblioBack.Controllers
         }
 
         [HttpGet("GetUsers")]
-        public async Task<IEnumerable<UserViewModel>> GetUsersAsync()
-        {
-            var users = await _userService.GetAllUsers();
-            return users.Data;
+        public async Task<BaseResponse<IEnumerable<UserViewModel>>> GetUsersAsync()
+        {           
+            return await _userService.GetAllUsers();
         }
     }
 }
