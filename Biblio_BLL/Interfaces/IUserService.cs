@@ -11,6 +11,6 @@ namespace Biblio_BLL.Interfaces
 {
     public interface IUserService
     {
-        Task<BaseResponse<IEnumerable<UserViewModel>>> GetAllUsers();
+        Task<BaseResponse<IEnumerable<UserViewModel>>> GetAllUsers(int pageCount, int usersCount = 6);
     }
 }

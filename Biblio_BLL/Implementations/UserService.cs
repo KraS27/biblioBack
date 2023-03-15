@@ -16,11 +16,12 @@ namespace Biblio_BLL.Implementations
             _userRepository = userRepository;
         }
 
-        public async Task<BaseResponse<IEnumerable<UserViewModel>>> GetAllUsers()
+        public async Task<BaseResponse<IEnumerable<UserViewModel>>> GetAllUsers(int pageCount, int usersCount)
         {
             try
             {
-                var users = await _userRepository.GetAll().Select(u => new UserViewModel()
+                var users = await _userRepository.GetAll()
+                .Select(u => new UserViewModel()
                 {
                     Id = u.Id,
                     Description = u.Description,
@@ -31,7 +32,10 @@ namespace Biblio_BLL.Implementations
                         City = u.Location.City,
                     },
                     Followed = u.Followed
-                }).ToListAsync();
+                })
+                .Skip(pageCount * usersCount)
+                .Take(usersCount)
+                .ToListAsync();
 
                 return new BaseResponse<IEnumerable<UserViewModel>>
                 {

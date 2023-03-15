@@ -19,9 +19,9 @@ namespace biblioBack.Controllers
         }
 
         [HttpGet("GetUsers")]
-        public async Task<IEnumerable<UserViewModel>> GetUsersAsync()
+        public async Task<IEnumerable<UserViewModel>> GetUsersAsync(int pageCount = 0)
         {
-            var users = await _userService.GetAllUsers();
+            var users = await _userService.GetAllUsers(pageCount);
             return users.Data;
         }
     }
