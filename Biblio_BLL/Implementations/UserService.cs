@@ -1,6 +1,7 @@
 ﻿using Biblio_BLL.Interfaces;
 using Biblio_DAL.Interfaces;
 using Biblio_DOMAIN.Entities;
+using Biblio_DOMAIN.Entities.DataModels;
 using Biblio_DOMAIN.Entities.DB;
 using Biblio_DOMAIN.Entities.VIewModels;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +17,7 @@ namespace Biblio_BLL.Implementations
             _userRepository = userRepository;
         }
 
-        public async Task<BaseResponse<IEnumerable<UserViewModel>>> GetAllUsers(int pageCount, int usersCount)
+        public async Task<BaseResponse<UsersData>> GetAllUsers(int page, int usersCount)
         {
             try
             {
@@ -32,22 +33,27 @@ namespace Biblio_BLL.Implementations
                         City = u.Location.City,
                     },
                     Followed = u.Followed
-                })
-                .Skip(pageCount * usersCount)
+                })  
+                .Skip(page * usersCount)
                 .Take(usersCount)
                 .ToListAsync();
 
-                return new BaseResponse<IEnumerable<UserViewModel>>
+                var usersData = new UsersData()
                 {
-                    Data = users,
+                    Users = users,
+                    UsersCount = users.Count()
+                };
+
+                return new BaseResponse<UsersData>
+                {
+                    Data = usersData,
                     Status = Biblio_DOMAIN.Entities.Enum.ResponseStatus.Ok
                 };
             }
             catch(Exception ex)
             {
-                return new BaseResponse<IEnumerable<UserViewModel>>
-                {
-                    Data = null,
+                return new BaseResponse<UsersData>
+                {                    
                     Descriptions = $"[GetAllUsers]: {ex.Message}",
                     Status = Biblio_DOMAIN.Entities.Enum.ResponseStatus.InternalServerError
                 };
