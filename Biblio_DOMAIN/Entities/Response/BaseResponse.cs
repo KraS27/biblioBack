@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblio_DOMAIN.Entities
+namespace Biblio_DOMAIN.Entities.Response
 {
     public class BaseResponse<T>
     {
