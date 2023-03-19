@@ -17,7 +17,7 @@ namespace biblioBack.Controllers
         }
 
         [HttpGet("GetUsers")]
-        public async Task<UserResponse> GetUsersAsync(int page = 0, int limit = 6)
+        public async Task<UserResponse> GetUsersAsync(int page = 1, int limit = 6)
         {
             var userResponse = await _userService.GetAllUsers(page, limit);
             return userResponse;

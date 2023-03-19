@@ -20,10 +20,10 @@ namespace Biblio_BLL.Implementations
         public async Task<UserResponse> GetAllUsers(int page, int usersCount)
         {
             try
-            {                                             
+            {
                 return new UserResponse
                 {
-                    Data = await _userRepository.GetAll()
+                    Users = await _userRepository.GetAll()
                         .Select(u => new UserDTO()
                         {
                             Id = u.Id,
@@ -36,7 +36,7 @@ namespace Biblio_BLL.Implementations
                             },
                             Followed = u.Followed
                         })
-                        .Skip(page * usersCount)
+                        .Skip((page - 1) * usersCount) // because pageNumbers started from 1, and if we don't substract 1, we will be skip first some users
                         .Take(usersCount)
                         .ToListAsync(),
                     UserCount = await _userRepository.GetAll().CountAsync(),
