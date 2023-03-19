@@ -1,8 +1,9 @@
 ﻿using Biblio_BLL.Interfaces;
 using Biblio_DAL.Interfaces;
 using Biblio_DOMAIN.Entities.DB;
-using Biblio_DOMAIN.Entities.Response;
-using Biblio_DOMAIN.Entities.VIewModels;
+using Biblio_DOMAIN.Entities.DTO;
+using Biblio_DOMAIN.Enum;
+using Biblio_DOMAIN.Response;
 using Microsoft.EntityFrameworkCore;
 
 namespace Biblio_BLL.Implementations
@@ -19,29 +20,27 @@ namespace Biblio_BLL.Implementations
         public async Task<UserResponse> GetAllUsers(int page, int usersCount)
         {
             try
-            {
-                var users = await _userRepository.GetAll()
-                .Select(u => new UserViewModel()
-                {
-                    Id = u.Id,
-                    Description = u.Description,
-                    UserName = u.UserName,
-                    Location = new LocationViewModel()
-                    {
-                        Country = u.Location.Country,
-                        City = u.Location.City,
-                    },
-                    Followed = u.Followed
-                })  
-                .Skip(page * usersCount)
-                .Take(usersCount)
-                .ToListAsync();
-               
+            {                                             
                 return new UserResponse
                 {
-                    Data = users,
-                    UserCount = users.Count,
-                    Status = Biblio_DOMAIN.Entities.Enum.ResponseStatus.Ok,
+                    Data = await _userRepository.GetAll()
+                        .Select(u => new UserDTO()
+                        {
+                            Id = u.Id,
+                            Description = u.Description,
+                            UserName = u.UserName,
+                            Location = new LocationDTO()
+                            {
+                                Country = u.Location.Country,
+                                City = u.Location.City,
+                            },
+                            Followed = u.Followed
+                        })
+                        .Skip(page * usersCount)
+                        .Take(usersCount)
+                        .ToListAsync(),
+                    UserCount = await _userRepository.GetAll().CountAsync(),
+                    Status = ResponseStatus.Ok
                 };
             }
             catch(Exception ex)
@@ -49,7 +48,7 @@ namespace Biblio_BLL.Implementations
                 return new UserResponse
                 {                    
                     Descriptions = $"[GetAllUsers]: {ex.Message}",
-                    Status = Biblio_DOMAIN.Entities.Enum.ResponseStatus.InternalServerError
+                    Status = ResponseStatus.InternalServerError
                 };
             }
         }

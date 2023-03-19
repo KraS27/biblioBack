@@ -1,11 +1,11 @@
-﻿using Biblio_DOMAIN.Entities.Enum;
+﻿using Biblio_DOMAIN.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblio_DOMAIN.Entities.Response
+namespace Biblio_DOMAIN.Response
 {
     public class BaseResponse<T>
     {

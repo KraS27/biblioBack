@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblio_DOMAIN.Entities.VIewModels
+namespace Biblio_DOMAIN.Entities.DTO
 {
-    public class LocationViewModel
+    public class LocationDTO
     {
         public string Country { get; set; }
 

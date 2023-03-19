@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblio_DOMAIN.Entities.Enum
+namespace Biblio_DOMAIN.Enum
 {
     public enum ResponseStatus
     {

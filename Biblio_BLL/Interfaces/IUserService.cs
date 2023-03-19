@@ -1,4 +1,4 @@
-﻿using Biblio_DOMAIN.Entities.Response;
+﻿using Biblio_DOMAIN.Response;
 
 namespace Biblio_BLL.Interfaces
 {

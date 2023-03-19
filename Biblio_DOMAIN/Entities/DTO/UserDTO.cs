@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblio_DOMAIN.Entities.VIewModels
+namespace Biblio_DOMAIN.Entities.DTO
 {
-    public class UserViewModel
+    public class UserDTO
     {
         public int Id { get; set; }
 
@@ -14,7 +14,7 @@ namespace Biblio_DOMAIN.Entities.VIewModels
 
         public string Description { get; set; }
 
-        public LocationViewModel Location { get; set; }
+        public LocationDTO Location { get; set; }
 
         public bool Followed { get; set; }
     }

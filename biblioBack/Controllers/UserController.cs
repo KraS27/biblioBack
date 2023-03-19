@@ -1,5 +1,5 @@
 ﻿using Biblio_BLL.Interfaces;
-using Biblio_DOMAIN.Entities.Response;
+using Biblio_DOMAIN.Response;
 using Microsoft.AspNetCore.Mvc;
 
 namespace biblioBack.Controllers
