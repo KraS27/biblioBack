@@ -39,7 +39,7 @@ namespace Biblio_BLL.Implementations
                         .Skip((page - 1) * usersCount) // because pageNumbers started from 1, and if we don't substract 1, we will be skip first some users
                         .Take(usersCount)
                         .ToListAsync(),
-                    UserCount = await _userRepository.GetAll().CountAsync(),
+                    UsersCount = await _userRepository.GetAll().CountAsync(),
                     Status = ResponseStatus.Ok
                 };
             }

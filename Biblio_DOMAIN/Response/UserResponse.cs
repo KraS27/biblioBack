@@ -11,6 +11,6 @@ namespace Biblio_DOMAIN.Response
 
         public ResponseStatus Status { get; set; }
 
-        public int UserCount { get; set; }
+        public int UsersCount { get; set; }
     }
 }
