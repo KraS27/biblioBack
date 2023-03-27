@@ -59,6 +59,5 @@ namespace Biblio_DAL
                 entity.Property(p => p.ProfileImg).HasColumnName("ProfileImg");
             });
         }
-
     }
 }
