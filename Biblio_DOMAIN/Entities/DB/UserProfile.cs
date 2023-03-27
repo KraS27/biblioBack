@@ -14,6 +14,7 @@ namespace Biblio_DOMAIN.Entities.DB
 
         public string ProfileImg { get; set; }
 
+        public int UserId { get; set; }
         public User User { get; set; }
     }
 }

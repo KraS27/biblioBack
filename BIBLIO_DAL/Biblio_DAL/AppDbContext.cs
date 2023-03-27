@@ -44,10 +44,7 @@ namespace Biblio_DAL
                 entity.HasOne(u => u.Location)
                 .WithMany(l => l.Users)
                 .HasForeignKey(u => u.LocationId);
-
-                entity.HasOne(u => u.UserProfile)
-                .WithOne(p => p.User)
-                .HasForeignKey<User>(u => u.ProfileId);
+               
             });
             builder.Entity<UserProfile>(entity =>
             {
@@ -57,6 +54,10 @@ namespace Biblio_DAL
 
                 entity.Property(p => p.AboutMe).HasColumnName("AboutMe");
                 entity.Property(p => p.ProfileImg).HasColumnName("ProfileImg");
+
+                entity.HasOne(p => p.User)
+                .WithOne(u => u.UserProfile)
+                .HasForeignKey<UserProfile>(p => p.UserId);
             });
         }
     }

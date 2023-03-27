@@ -19,7 +19,6 @@ namespace Biblio_DOMAIN.Entities.DB
        
         public bool Followed { get; set; }
 
-        public int ProfileId { get; set; }
         public UserProfile UserProfile { get; set; }
     }
 }
