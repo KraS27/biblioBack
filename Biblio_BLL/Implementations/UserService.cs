@@ -27,7 +27,7 @@ namespace Biblio_BLL.Implementations
                         .Select(u => new UserDTO()
                         {
                             Id = u.Id,
-                            Description = u.Description,
+                            SmallDescription = u.SmallDescription,
                             UserName = u.UserName,
                             Location = new LocationDTO()
                             {
@@ -46,8 +46,8 @@ namespace Biblio_BLL.Implementations
             catch(Exception ex)
             {
                 return new UserResponse
-                {                    
-                    Descriptions = $"[GetAllUsers]: {ex.Message}",
+                {
+                    Description = $"[GetAllUsers]: {ex.Message}",
                     Status = ResponseStatus.InternalServerError
                 };
             }

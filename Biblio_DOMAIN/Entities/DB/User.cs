@@ -12,11 +12,14 @@ namespace Biblio_DOMAIN.Entities.DB
 
         public string UserName { get; set; }
 
-        public string Description { get; set; }
+        public string SmallDescription { get; set; }
 
         public int LocationId { get; set; }
         public Location Location { get; set; }
        
         public bool Followed { get; set; }
+
+        public int ProfileId { get; set; }
+        public UserProfile UserProfile { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace Biblio_DOMAIN.Response
     {
         public IEnumerable<UserDTO> Users { get; set; }
 
-        public string Descriptions { get; set; }
+        public string Description { get; set; }
 
         public ResponseStatus Status { get; set; }
 

@@ -12,7 +12,7 @@ namespace Biblio_DOMAIN.Entities.DTO
 
         public string UserName { get; set; }
 
-        public string Description { get; set; }
+        public string SmallDescription { get; set; }
 
         public LocationDTO Location { get; set; }
 
