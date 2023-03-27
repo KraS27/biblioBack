@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace biblioBack.Controllers
 {
-
     [ApiController]
     [Route("[controller]")]
     public class UserController : ControllerBase

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Biblio_BLL.Interfaces
 {
-    internal interface IProfileService
+    public interface IProfileService
     {
         Task<ProfileResponse> GetProfile(int UserId);
     }
