@@ -24,7 +24,7 @@ namespace Biblio_BLL.Implementations
                 var profileDTO = new ProfileDTO
                 {
                     Id = profile.UserId,
-                    AboutMe = profile.AboutMe,
+                    Description = profile.Description,
                     ProfileImg = profile.ProfileImg,
                 };
                 return new ProfileResponse

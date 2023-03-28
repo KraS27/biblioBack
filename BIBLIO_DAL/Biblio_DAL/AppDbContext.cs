@@ -52,7 +52,7 @@ namespace Biblio_DAL
 
                 entity.ToTable("Profile");
 
-                entity.Property(p => p.AboutMe).HasColumnName("AboutMe");
+                entity.Property(p => p.Description).HasColumnName("Description");
                 entity.Property(p => p.ProfileImg).HasColumnName("ProfileImg");
 
                 entity.HasOne(p => p.User)
