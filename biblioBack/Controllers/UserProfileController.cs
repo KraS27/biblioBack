@@ -6,14 +6,15 @@ namespace biblioBack.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserProfileController : ControllerBase
+    public class ProfileController : ControllerBase
     {
         private readonly IProfileService _profileService;
 
-        public UserProfileController(IProfileService profileService)
+        public ProfileController(IProfileService profileService)
         {
             _profileService = profileService;
         }
+
         [HttpGet("GetProfile")]
         public Task<ProfileResponse> GetProfile(int userId)
         {

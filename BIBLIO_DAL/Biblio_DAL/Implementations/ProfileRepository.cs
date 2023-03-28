@@ -3,7 +3,7 @@ using Biblio_DOMAIN.Entities.DB;
 
 namespace Biblio_DAL.Implementations
 {
-    public class ProfileRepository : IBaseRepository<UserProfile>
+    public class ProfileRepository : IBaseRepository<Profile>
     {
         private readonly AppDbContext _appContext;
 
@@ -12,22 +12,22 @@ namespace Biblio_DAL.Implementations
             _appContext = appContext;
         }
      
-        public Task Create(UserProfile entity)
+        public Task Create(Profile entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(UserProfile entity)
+        public Task Delete(Profile entity)
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<UserProfile> GetAll()
+        public IQueryable<Profile> GetAll()
         {
             return _appContext.Profiles;
         }
 
-        public Task<UserProfile> Update(UserProfile entity)
+        public Task<Profile> Update(Profile entity)
         {
             throw new NotImplementedException();
         }

@@ -12,7 +12,7 @@ namespace Biblio_DAL
     {
         public DbSet<Location> Locations { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<UserProfile> Profiles { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options) { }
 
@@ -46,7 +46,7 @@ namespace Biblio_DAL
                 .HasForeignKey(u => u.LocationId);
                
             });
-            builder.Entity<UserProfile>(entity =>
+            builder.Entity<Profile>(entity =>
             {
                 entity.HasKey(p => p.Id).HasName("Primary");
 
@@ -57,7 +57,7 @@ namespace Biblio_DAL
 
                 entity.HasOne(p => p.User)
                 .WithOne(u => u.UserProfile)
-                .HasForeignKey<UserProfile>(p => p.UserId);
+                .HasForeignKey<Profile>(p => p.UserId);
             });
         }
     }

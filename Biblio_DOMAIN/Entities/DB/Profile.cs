@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Biblio_DOMAIN.Entities.DB
 {
-    public class UserProfile
+    public class Profile
     {
         public int Id { get; set; }
 

@@ -27,7 +27,7 @@ namespace biblioBack
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
-            builder.Services.AddScoped<IBaseRepository<UserProfile>, ProfileRepository>();
+            builder.Services.AddScoped<IBaseRepository<Profile>, ProfileRepository>();
             builder.Services.AddScoped<IBaseRepository<User>, UserRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IProfileService, ProfileService>();

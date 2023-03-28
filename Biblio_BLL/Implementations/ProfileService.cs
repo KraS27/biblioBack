@@ -9,9 +9,9 @@ namespace Biblio_BLL.Implementations
 {
     public class ProfileService : IProfileService
     {
-        private readonly IBaseRepository<UserProfile> _profileRepository;
+        private readonly IBaseRepository<Profile> _profileRepository;
 
-        public ProfileService(IBaseRepository<UserProfile> profileRepository)
+        public ProfileService(IBaseRepository<Profile> profileRepository)
         {
             _profileRepository = profileRepository;
         }
