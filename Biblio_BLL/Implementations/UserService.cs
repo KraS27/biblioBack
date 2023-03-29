@@ -34,7 +34,8 @@ namespace Biblio_BLL.Implementations
                                 Country = u.Location.Country,
                                 City = u.Location.City,
                             },
-                            Followed = u.Followed
+                            Followed = u.Followed,
+                            ProfileImg = u.UserProfile.ProfileImg
                         })
                         .Skip((page - 1) * usersCount) // because pageNumbers started from 1, and if we don't substract 1, we will be skip first some users
                         .Take(usersCount)
