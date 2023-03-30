@@ -6,16 +6,16 @@ namespace biblioBack.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {     
         private readonly IUserService _userService;
 
-        public UserController(IUserService userService)
+        public UsersController(IUserService userService)
         {
             _userService = userService;
         }
 
-        [HttpGet("GetUsers")]
+        [HttpGet]
         public async Task<UserResponse> GetUsersAsync(int page = 1, int limit = 6)
         {
             var userResponse = await _userService.GetAllUsers(page, limit);

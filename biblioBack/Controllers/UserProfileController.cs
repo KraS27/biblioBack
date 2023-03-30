@@ -15,7 +15,7 @@ namespace biblioBack.Controllers
             _profileService = profileService;
         }
 
-        [HttpGet("GetProfile")]
+        [HttpGet]
         public Task<ProfileResponse> GetProfile(int userId)
         {
             return _profileService.GetProfile(userId);
