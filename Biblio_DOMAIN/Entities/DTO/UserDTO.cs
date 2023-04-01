@@ -19,7 +19,7 @@ namespace Biblio_DOMAIN.Entities.DTO
 
         public string Email { get; set; }
     
-        public Location Location { get; set; }
+        public LocationDTO Location { get; set; }
 
         public string ProfileImg { get; set; }
     }
