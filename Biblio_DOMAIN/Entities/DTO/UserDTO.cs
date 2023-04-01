@@ -22,5 +22,7 @@ namespace Biblio_DOMAIN.Entities.DTO
         public LocationDTO Location { get; set; }
 
         public string ProfileImg { get; set; }
+
+        public string Status { get; set; }
     }
 }
