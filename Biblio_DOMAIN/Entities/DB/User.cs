@@ -10,15 +10,17 @@ namespace Biblio_DOMAIN.Entities.DB
     {
         public int Id { get; set; }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
         public string UserName { get; set; }
 
-        public string SmallDescription { get; set; }
+        public string Email { get; set; }
 
         public int LocationId { get; set; }
         public Location Location { get; set; }
-       
-        public bool Followed { get; set; }
-
+            
         public Profile UserProfile { get; set; }
     }
 }

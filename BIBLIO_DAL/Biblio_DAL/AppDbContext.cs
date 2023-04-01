@@ -35,12 +35,12 @@ namespace Biblio_DAL
 
                 entity.ToTable("Users");
 
-                entity.Property(u => u.Id).HasColumnName("Id");
-                entity.Property(u => u.UserName).HasColumnName("UserName");
-                entity.Property(u => u.SmallDescription).HasColumnName("SmallDescription");
-                entity.Property(u => u.LocationId).HasColumnName("LocationId");
-                entity.Property(u => u.Followed).HasColumnName("Followed");
-
+                entity.Property(u => u.Id).HasColumnName("id");
+                entity.Property(u => u.FirstName).HasColumnName("first_name");
+                entity.Property(u => u.LastName).HasColumnName("last_name");
+                entity.Property(u => u.UserName).HasColumnName("user_name");
+                entity.Property(u => u.Email).HasColumnName("email");
+                
                 entity.HasOne(u => u.Location)
                 .WithMany(l => l.Users)
                 .HasForeignKey(u => u.LocationId);

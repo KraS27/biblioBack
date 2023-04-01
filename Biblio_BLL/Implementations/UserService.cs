@@ -27,14 +27,14 @@ namespace Biblio_BLL.Implementations
                         .Select(u => new UserDTO()
                         {
                             Id = u.Id,
-                            SmallDescription = u.SmallDescription,
+                            FirstName = u.FirstName,
+                            LastName = u.LastName,
                             UserName = u.UserName,
                             Location = new LocationDTO()
                             {
                                 Country = u.Location.Country,
                                 City = u.Location.City,
-                            },
-                            Followed = u.Followed,
+                            },                          
                             ProfileImg = u.UserProfile.ProfileImg
                         })
                         .Skip((page - 1) * usersCount) // because pageNumbers started from 1, and if we don't substract 1, we will be skip first some users
