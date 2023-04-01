@@ -24,9 +24,9 @@ namespace Biblio_DAL
 
                 entity.ToTable("Locations");
 
-                entity.Property(l => l.Id).HasColumnName("Id");
-                entity.Property(l => l.Country).HasColumnName("Country");
-                entity.Property(l => l.City).HasColumnName("City");
+                entity.Property(l => l.Id).HasColumnName("id");
+                entity.Property(l => l.Country).HasColumnName("country");
+                entity.Property(l => l.City).HasColumnName("city");
 
             });
             builder.Entity<User>(entity =>
@@ -52,8 +52,9 @@ namespace Biblio_DAL
 
                 entity.ToTable("Profile");
 
-                entity.Property(p => p.Description).HasColumnName("Description");
-                entity.Property(p => p.ProfileImg).HasColumnName("ProfileImg");
+                entity.Property(u => u.Id).HasColumnName("id");
+                entity.Property(p => p.Description).HasColumnName("description");
+                entity.Property(p => p.ProfileImg).HasColumnName("profileImg");
 
                 entity.HasOne(p => p.User)
                 .WithOne(u => u.UserProfile)
