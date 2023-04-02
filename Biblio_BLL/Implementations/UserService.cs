@@ -26,16 +26,10 @@ namespace Biblio_BLL.Implementations
                     Users = await _userRepository.GetAll()
                         .Select(u => new UserDTO()
                         {
-                            Id = u.Id,
-                            FirstName = u.FirstName,
-                            LastName = u.LastName,
-                            UserName = u.UserName,
-                            Location = new LocationDTO()
-                            {
-                                Country = u.Location.Country,
-                                City = u.Location.City,
-                            },                          
-                            ProfileImg = u.UserProfile.ProfileImg
+                            Id = u.Id,                          
+                            UserName = u.UserName,                                                      
+                            ProfileImg = u.UserProfile.ProfileImg,
+                            Status = u.UserProfile.Status
                         })
                         .Skip((page - 1) * usersCount) // because pageNumbers started from 1, and if we don't substract 1, we will be skip first some users
                         .Take(usersCount)

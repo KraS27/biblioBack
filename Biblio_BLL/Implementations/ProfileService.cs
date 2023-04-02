@@ -20,12 +20,20 @@ namespace Biblio_BLL.Implementations
         {
             try
             {
-                var profile = await _profileRepository.GetAll().FirstOrDefaultAsync(p => p.UserId == UserId);
+                var profile = await _profileRepository.GetAll().Include(p => p.User.Location).FirstOrDefaultAsync(p => p.UserId == UserId);
                 var profileDTO = new ProfileDTO
                 {
                     Id = profile.UserId,
                     Description = profile.Description,
                     ProfileImg = profile.ProfileImg,
+                    Status = profile.Status,
+                    FirstName= profile.FirstName,
+                    LastName= profile.LastName,
+                    Location = new LocationDTO
+                    {
+                        Country = profile.User.Location.Country,
+                        City = profile.User.Location.City,
+                    }
                 };
                 return new ProfileResponse
                 {

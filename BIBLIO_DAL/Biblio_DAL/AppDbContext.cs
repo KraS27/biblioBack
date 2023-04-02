@@ -35,9 +35,7 @@ namespace Biblio_DAL
 
                 entity.ToTable("Users");
 
-                entity.Property(u => u.Id).HasColumnName("id");
-                entity.Property(u => u.FirstName).HasColumnName("first_name");
-                entity.Property(u => u.LastName).HasColumnName("last_name");
+                entity.Property(u => u.Id).HasColumnName("id");               
                 entity.Property(u => u.UserName).HasColumnName("user_name");
                 entity.Property(u => u.Email).HasColumnName("email");
                 entity.Property(u => u.LocationId).HasColumnName("password");
@@ -58,6 +56,9 @@ namespace Biblio_DAL
                 entity.Property(p => p.Description).HasColumnName("description");
                 entity.Property(p => p.ProfileImg).HasColumnName("profile_img");
                 entity.Property(p => p.UserId).HasColumnName("user_id");
+                entity.Property(p => p.Status).HasColumnName("status");
+                entity.Property(p => p.FirstName).HasColumnName("first_name");
+                entity.Property(p => p.LastName).HasColumnName("last_name");
 
                 entity.HasOne(p => p.User)
                 .WithOne(u => u.UserProfile)
