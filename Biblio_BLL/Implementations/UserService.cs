@@ -21,22 +21,35 @@ namespace Biblio_BLL.Implementations
         {
             try
             {
-                return new UserResponse
-                {
-                    Users = await _userRepository.GetAll()
+                var users = await _userRepository.GetAll()
                         .Select(u => new UserDTO()
                         {
-                            Id = u.Id,                          
-                            UserName = u.UserName,                                                      
+                            Id = u.Id,
+                            UserName = u.UserName,
                             ProfileImg = u.UserProfile.ProfileImg,
                             Status = u.UserProfile.Status
                         })
                         .Skip((page - 1) * usersCount) // because pageNumbers started from 1, and if we don't substract 1, we will be skip first some users
                         .Take(usersCount)
-                        .ToListAsync(),
-                    UsersCount = await _userRepository.GetAll().CountAsync(),
-                    Status = ResponseStatus.Ok
-                };
+                        .ToListAsync();
+
+                if(users.Count > 0)
+                {
+                    return new UserResponse
+                    {
+                        Users = users,
+                        UsersCount = await _userRepository.GetAll().CountAsync(),
+                        Status = ResponseStatus.Ok
+                    };
+                }
+                else
+                {
+                    return new UserResponse
+                    {
+                        Status = ResponseStatus.NotFound,
+                        Description = "Users Not Found"
+                    };
+                }
             }
             catch(Exception ex)
             {
