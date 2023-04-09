@@ -21,7 +21,7 @@ namespace Biblio_BLL.Implementations
         {
             try
             {
-                var users =  _userRepository.GetAll()
+                var users = await _userRepository.GetAll()
                         .Select(u => new UserDTO()
                         {
                             Id = u.Id,
@@ -31,14 +31,14 @@ namespace Biblio_BLL.Implementations
                         })
                         .Skip((page - 1) * usersCount) // because pageNumbers started from 1, and if we don't substract 1, we will be skip first some users
                         .Take(usersCount)
-                        .ToList();
+                        .ToListAsync();
 
                 if(users.Count > 0)
                 {
                     return new UserResponse
                     {
                         Users = users,
-                        UsersCount =  _userRepository.GetAll().Count(),
+                        UsersCount = await _userRepository.GetAll().CountAsync(),
                         Status = ResponseStatus.Ok
                     };
                 }

@@ -13,8 +13,7 @@ namespace Biblio_TESTS.BIBLIO_BLL_TESTS
         [Fact]
         public async Task GetAllUsersReturnOkResponseStatusAsync()
         {
-            //Arrange
-                                   
+            //Arrange                                  
             var mock = new Mock<IBaseRepository<User>>();
             mock.Setup(repo => repo.GetAll()).Returns(GetTestUsers());
             var userService = new UserService(mock.Object);
@@ -22,7 +21,7 @@ namespace Biblio_TESTS.BIBLIO_BLL_TESTS
             //Act
             int page = 1;
             int usersCount = 6;
-            var result = await userService.GetAllUsers(page, usersCount);
+             var result = await userService.GetAllUsers(page, usersCount);
 
             //Assert
             Assert.Equal(Biblio_DOMAIN.Enum.ResponseStatus.Ok, result.Status);
@@ -38,7 +37,7 @@ namespace Biblio_TESTS.BIBLIO_BLL_TESTS
 
             //Act
             int page = -1;
-            int usersCount = 6;
+            int usersCount = 2;
             var result = await userService.GetAllUsers(page, usersCount);
 
             //Assert
@@ -57,8 +56,21 @@ namespace Biblio_TESTS.BIBLIO_BLL_TESTS
                     Email= "test1@gmai.com",
                     LocationId = 1,
                     UserName = "kavabanga",
-                    Location = null,
-                    UserProfile = null
+                    Location = new Location
+                    {
+                        Id = 1,
+                        Country = "fa",
+                        City = "fSA"
+                    },
+                    UserProfile = new Profile
+                    {
+                        Id = 1,
+                        Description = "Test",
+                        FirstName = "Test",
+                        LastName = "Test",
+                        Status = "FS",
+                        UserId = 1,
+                    }
                 },
                 new User()
                 {
@@ -66,8 +78,21 @@ namespace Biblio_TESTS.BIBLIO_BLL_TESTS
                     Email= "test2@gmai.com",
                     LocationId = 2,
                     UserName = "kilokill",
-                    Location = null,
-                    UserProfile = null
+                    Location = new Location
+                    {
+                        Id = 2,
+                        Country = "fa",
+                        City = "fSA"
+                    },
+                    UserProfile = new Profile
+                    {
+                        Id = 2,
+                        Description = "Test",
+                        FirstName = "Test",
+                        LastName = "Test",
+                        Status = "FS",
+                        UserId = 1,
+                    }
                 },
                 new User()
                 {
@@ -75,8 +100,21 @@ namespace Biblio_TESTS.BIBLIO_BLL_TESTS
                     Email= "test3@gmai.com",
                     LocationId = 1,
                     UserName = "pupa",
-                    Location = null,
-                    UserProfile = null
+                    Location = new Location
+                    {
+                        Id = 1,
+                        Country = "fa",
+                        City = "fSA"
+                    },
+                    UserProfile = new Profile
+                    {
+                        Id = 1,
+                        Description = "Test",
+                        FirstName = "Test",
+                        LastName = "Test",
+                        Status = "FS",
+                        UserId = 1,
+                    }
                 },
                 new User()
                 {
@@ -84,8 +122,21 @@ namespace Biblio_TESTS.BIBLIO_BLL_TESTS
                     Email= "test4@gmai.com",
                     LocationId = 3,
                     UserName = "Kiril",
-                    Location = null,
-                    UserProfile = null
+                    Location = new Location
+                    {
+                        Id = 1,
+                        Country = "fa",
+                        City = "fSA"
+                    },
+                    UserProfile = new Profile
+                    {
+                        Id = 1,
+                        Description = "Test",
+                        FirstName = "Test",
+                        LastName = "Test",
+                        Status = "FS",
+                        UserId = 1,
+                    }
                 },
                 new User()
                 {
@@ -93,8 +144,21 @@ namespace Biblio_TESTS.BIBLIO_BLL_TESTS
                     Email= "test5@gmai.com",
                     LocationId = 2,
                     UserName = "ChackaLaca",
-                    Location = null,
-                    UserProfile = null
+                    Location = new Location
+                    {
+                        Id = 1,
+                        Country = "fa",
+                        City = "fSA"
+                    },
+                    UserProfile = new Profile
+                    {
+                        Id = 1,
+                        Description = "Test",
+                        FirstName = "Test",
+                        LastName = "Test",
+                        Status = "FS",
+                        UserId = 1,
+                    }
                 },
                 new User()
                 {
@@ -102,10 +166,25 @@ namespace Biblio_TESTS.BIBLIO_BLL_TESTS
                     Email= "test6@gmai.com",
                     LocationId = 2,
                     UserName = "PikaChicka",
-                    Location = null,
-                    UserProfile = null
+                    Location = new Location
+                    {
+                        Id = 1,
+                        Country = "fa",
+                        City = "fSA"
+                    },
+                    UserProfile = new Profile
+                    {
+                        Id = 1,
+                        Description = "Test",
+                        FirstName = "Test",
+                        LastName = "Test",
+                        Status = "FS",
+                        UserId = 1,
+                    }
                 },
             };
+
+            var mock = users.AsQueryable().BuildMockDbSet();
 
             return users.AsQueryable();
         }
