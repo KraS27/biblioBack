@@ -29,8 +29,10 @@ namespace biblioBack
 
             builder.Services.AddScoped<IBaseRepository<Profile>, ProfileRepository>();
             builder.Services.AddScoped<IBaseRepository<User>, UserRepository>();
+            builder.Services.AddScoped<IBaseRepository<Follower>, FollowersRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IProfileService, ProfileService>();
+            builder.Services.AddScoped<IFollowersService, FollowersService>();
 
             var app = builder.Build();
             app.UseCors(builder => builder.AllowAnyOrigin());

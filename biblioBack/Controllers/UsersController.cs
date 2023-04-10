@@ -9,10 +9,12 @@ namespace biblioBack.Controllers
     public class UsersController : ControllerBase
     {     
         private readonly IUserService _userService;
+        private readonly IFollowersService _followersService;
 
-        public UsersController(IUserService userService)
+        public UsersController(IUserService userService, IFollowersService followersService)
         {
             _userService = userService;
+            _followersService = followersService;
         }
 
         [HttpGet]
@@ -20,6 +22,12 @@ namespace biblioBack.Controllers
         {
             var userResponse = await _userService.GetAllUsers(page, limit);
             return userResponse;
+        }
+
+        [HttpGet("/users/subscribers")]
+        public async Task<FollowersResponse> GetSubscribersAsync(int userId)
+        {
+            return await _followersService.GetSubscribers(userId);
         }
     }
 }

@@ -3,7 +3,7 @@
 
 namespace Biblio_BLL.Interfaces
 {
-    internal interface IFollowersService
+    public interface IFollowersService
     {
         Task<FollowersResponse> GetSubscribers(int userId);
     }

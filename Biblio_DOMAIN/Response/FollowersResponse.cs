@@ -10,9 +10,9 @@ namespace Biblio_DOMAIN.Response
 {
     public class FollowersResponse
     {
-        public Follower[] Followers { get; set; }
+        public int[] Subscribers { get; set; }
         
-        public int FollowersCount { get; set; }
+        public int SubscribersCount { get; set; }
 
         public string Description { get; set; }
 
