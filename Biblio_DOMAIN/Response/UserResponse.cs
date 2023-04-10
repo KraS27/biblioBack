@@ -3,14 +3,8 @@ using Biblio_DOMAIN.Enum;
 
 namespace Biblio_DOMAIN.Response
 {
-    public class UserResponse 
-    {
-        public IEnumerable<UserDTO> Users { get; set; }
-
-        public string Description { get; set; }
-
-        public ResponseStatus Status { get; set; }
-
+    public class UserResponse<T> : BaseResponse<T>
+    {           
         public int UsersCount { get; set; }
     }
 }

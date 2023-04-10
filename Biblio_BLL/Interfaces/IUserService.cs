@@ -1,9 +1,10 @@
-﻿using Biblio_DOMAIN.Response;
+﻿using Biblio_DOMAIN.Entities.DTO;
+using Biblio_DOMAIN.Response;
 
 namespace Biblio_BLL.Interfaces
 {
     public interface IUserService
     {
-        Task<UserResponse> GetAllUsers(int pages, int usersCount);
+        Task<UserResponse<IEnumerable<UserDTO>>> GetAllUsers(int pages, int usersCount);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Biblio_BLL.Interfaces;
+using Biblio_DOMAIN.Entities.DTO;
 using Biblio_DOMAIN.Response;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,9 +17,9 @@ namespace biblioBack.Controllers
         }
 
         [HttpGet]
-        public Task<ProfileResponse> GetProfile(int userId)
+        public async Task<BaseResponse<ProfileDTO>> GetProfile(int userId)
         {
-            return _profileService.GetProfile(userId);
+            return await _profileService.GetProfile(userId);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Biblio_BLL.Implementations
             _profileRepository = profileRepository;
         }
 
-        public async Task<ProfileResponse> GetProfile(int UserId)
+        public async Task<BaseResponse<ProfileDTO>> GetProfile(int UserId)
         {
             try
             {
@@ -35,15 +35,15 @@ namespace Biblio_BLL.Implementations
                         City = profile.User.Location.City,
                     }
                 };
-                return new ProfileResponse
+                return new BaseResponse<ProfileDTO>
                 {
-                    Profile = profileDTO,
+                    Data = profileDTO,
                     Status = Biblio_DOMAIN.Enum.ResponseStatus.Ok
                 };
             }
             catch (Exception ex)
             {
-                return new ProfileResponse
+                return new BaseResponse<ProfileDTO>
                 {
                     Description = $"[GetProfile]: {ex.Message}",
                     Status = Biblio_DOMAIN.Enum.ResponseStatus.InternalServerError

@@ -1,4 +1,5 @@
-﻿using Biblio_DOMAIN.Response;
+﻿using Biblio_DOMAIN.Entities.DTO;
+using Biblio_DOMAIN.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Biblio_BLL.Interfaces
 {
     public interface IProfileService
     {
-        Task<ProfileResponse> GetProfile(int UserId);
+        Task<BaseResponse<ProfileDTO>> GetProfile(int UserId);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Biblio_BLL.Interfaces;
+using Biblio_DOMAIN.Entities.DTO;
 using Biblio_DOMAIN.Response;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,14 +19,14 @@ namespace biblioBack.Controllers
         }
 
         [HttpGet]
-        public async Task<UserResponse> GetUsersAsync(int page = 1, int limit = 6)
+        public async Task<UserResponse<IEnumerable<UserDTO>>> GetUsersAsync(int page = 1, int limit = 6)
         {
             var userResponse = await _userService.GetAllUsers(page, limit);
             return userResponse;
         }
 
         [HttpGet("/users/subscribers")]
-        public async Task<FollowersResponse> GetSubscribersAsync(int userId)
+        public async Task<FollowersResponse<int[]>> GetSubscribersAsync(int userId)
         {
             return await _followersService.GetSubscribers(userId);
         }

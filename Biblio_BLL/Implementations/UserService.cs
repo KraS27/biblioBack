@@ -17,7 +17,7 @@ namespace Biblio_BLL.Implementations
             _userRepository = userRepository;
         }
 
-        public async Task<UserResponse> GetAllUsers(int page, int usersCount)
+        public async Task<UserResponse<IEnumerable<UserDTO>>> GetAllUsers(int page, int usersCount)
         {
             try
             {
@@ -35,16 +35,16 @@ namespace Biblio_BLL.Implementations
 
                 if(users.Count > 0)
                 {
-                    return new UserResponse
+                    return new UserResponse<IEnumerable<UserDTO>>
                     {
-                        Users = users,
+                        Data = users,
                         UsersCount = await _userRepository.GetAll().CountAsync(),
                         Status = ResponseStatus.Ok
                     };
                 }
                 else
                 {
-                    return new UserResponse
+                    return new UserResponse<IEnumerable<UserDTO>>
                     {
                         Status = ResponseStatus.NotFound,
                         Description = "Users Not Found"
@@ -53,7 +53,7 @@ namespace Biblio_BLL.Implementations
             }
             catch(Exception ex)
             {
-                return new UserResponse
+                return new UserResponse<IEnumerable<UserDTO>>
                 {
                     Description = $"[GetAllUsers]: {ex.Message}",
                     Status = ResponseStatus.InternalServerError
