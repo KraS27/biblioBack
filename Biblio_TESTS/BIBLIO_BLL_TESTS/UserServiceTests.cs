@@ -15,13 +15,13 @@ namespace Biblio_TESTS.BIBLIO_BLL_TESTS
         {
             //Arrange                                  
             var mock = new Mock<IBaseRepository<User>>();
-            mock.Setup(repo => repo.GetAll()).Returns(GetTestUsers());
+            mock.Setup(repo => repo.GetAll()).Returns(GetTestUsers());           
             var userService = new UserService(mock.Object);
 
             //Act
             int page = 1;
             int usersCount = 6;
-             var result = await userService.GetAllUsers(page, usersCount);
+            var result = await userService.GetAllUsers(page, usersCount);
 
             //Assert
             Assert.Equal(Biblio_DOMAIN.Enum.ResponseStatus.Ok, result.Status);
@@ -182,9 +182,7 @@ namespace Biblio_TESTS.BIBLIO_BLL_TESTS
                         UserId = 1,
                     }
                 },
-            };
-
-            var mock = users.AsQueryable().BuildMockDbSet();
+            };            
 
             return users.AsQueryable();
         }

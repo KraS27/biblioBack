@@ -13,6 +13,7 @@ namespace Biblio_DAL
         public DbSet<Location> Locations { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Follower> Followers { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options) { }
 
@@ -63,6 +64,17 @@ namespace Biblio_DAL
                 entity.HasOne(p => p.User)
                 .WithOne(u => u.UserProfile)
                 .HasForeignKey<Profile>(p => p.UserId);
+            });
+            builder.Entity<Follower>(entity =>
+            {
+                entity.HasKey(f => f.Id).HasName("Primary");
+
+                entity.ToTable("Followers");
+
+                entity.Property(u => u.Id).HasColumnName("id");
+                entity.Property(u => u.Owner).HasColumnName("owner");
+                entity.Property(u => u.Subscriber).HasColumnName("subscriber");
+                                
             });
         }
     }
