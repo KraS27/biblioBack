@@ -30,5 +30,11 @@ namespace biblioBack.Controllers
         {
             return await _followersService.GetSubscribers(userId);
         }
+
+        [HttpPost("/users/subscribers")]
+        public async Task<FollowersResponse<bool>> AddSubscriberAsync(int ownerId, int subscriberId)
+        {
+            return await _followersService.AddSubscriber(ownerId, subscriberId);
+        }
     }
 }

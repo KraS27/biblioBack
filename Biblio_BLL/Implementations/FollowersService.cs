@@ -19,13 +19,9 @@ namespace Biblio_BLL.Implementations
         {
             try
             {
-                var newFollower = new Follower
-                {
-                    Owner = ownerId,
-                    Subscriber = subscriberId
-                };
+                var follower = _followersRepository.GetAll().FirstOrDefault(f => f.Owner == ownerId && f.Subscriber == subscriberId);
 
-                if (await _followersRepository.GetAll().ContainsAsync(newFollower))
+                if (follower != null)
                 {
                     return new FollowersResponse<bool> 
                     { 
@@ -35,7 +31,7 @@ namespace Biblio_BLL.Implementations
                 }
                 else
                 {
-                    await _followersRepository.Create(newFollower);
+                    await _followersRepository.Create(new Follower { Owner = ownerId, Subscriber = subscriberId});
                     return new FollowersResponse<bool>
                     {
                         Data = true,
