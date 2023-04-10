@@ -8,14 +8,8 @@ using System.Threading.Tasks;
 
 namespace Biblio_DOMAIN.Response
 {
-    public class FollowersResponse
-    {
-        public int[] Subscribers { get; set; }
-        
+    public class FollowersResponse<T> : BaseResponse<T>
+    {              
         public int SubscribersCount { get; set; }
-
-        public string Description { get; set; }
-
-        public ResponseStatus Status { get; set; }
     }
 }

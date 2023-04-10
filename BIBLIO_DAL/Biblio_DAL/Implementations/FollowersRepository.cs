@@ -17,9 +17,10 @@ namespace Biblio_DAL.Implementations
             _appDbContext = appDbContext;
         }
 
-        public Task Create(Follower entity)
+        public async Task Create(Follower entity)
         {
-            throw new NotImplementedException();
+            _appDbContext.Add(entity);
+            await _appDbContext.SaveChangesAsync();
         }
 
         public Task Delete(Follower entity)

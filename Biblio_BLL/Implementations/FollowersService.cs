@@ -15,7 +15,7 @@ namespace Biblio_BLL.Implementations
             _followersRepository = followersRepository;
         }
 
-        public async Task<FollowersResponse> GetSubscribers(int userId)
+        public async Task<FollowersResponse<int[]>> GetSubscribers(int userId)
         {
             try
             {
@@ -24,16 +24,16 @@ namespace Biblio_BLL.Implementations
                     .Select(f => f.Subscriber)
                     .ToArrayAsync();
 
-                return new FollowersResponse
+                return new FollowersResponse<int[]>
                 {
-                    Subscribers = subscribers,
+                    Data = subscribers,
                     SubscribersCount = subscribers.Length,
                     Status = Biblio_DOMAIN.Enum.ResponseStatus.Ok
                 };
             }
             catch(Exception ex)
             {
-                return new FollowersResponse
+                return new FollowersResponse<int[]>
                 {
                     Description = $"[GetSubscribers]: " + ex.Message,
                     Status = Biblio_DOMAIN.Enum.ResponseStatus.InternalServerError
