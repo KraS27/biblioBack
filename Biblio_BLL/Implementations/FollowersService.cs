@@ -15,6 +15,45 @@ namespace Biblio_BLL.Implementations
             _followersRepository = followersRepository;
         }
 
+        public async Task<FollowersResponse<bool>> AddSubscriber(int ownerId, int subscriberId)
+        {
+            try
+            {
+                var newFollower = new Follower
+                {
+                    Owner = ownerId,
+                    Subscriber = subscriberId
+                };
+
+                if (await _followersRepository.GetAll().ContainsAsync(newFollower))
+                {
+                    return new FollowersResponse<bool> 
+                    { 
+                        Data = false,
+                        Description = "Such follower has already exist"
+                    };
+                }
+                else
+                {
+                    await _followersRepository.Create(newFollower);
+                    return new FollowersResponse<bool>
+                    {
+                        Data = true,
+                        Status = Biblio_DOMAIN.Enum.ResponseStatus.Ok
+                    };
+                }                
+            }
+            catch(Exception ex)
+            {
+                return new FollowersResponse<bool>
+                {
+                    Data = false,
+                    Status = Biblio_DOMAIN.Enum.ResponseStatus.InternalServerError,
+                    Description = "[AddSubscriber]: " + ex.Message
+                };
+            }
+        }
+
         public async Task<FollowersResponse<int[]>> GetSubscribers(int userId)
         {
             try
