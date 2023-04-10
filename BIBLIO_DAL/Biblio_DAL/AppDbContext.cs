@@ -73,8 +73,7 @@ namespace Biblio_DAL
 
                 entity.Property(u => u.Id).HasColumnName("id");
                 entity.Property(u => u.Owner).HasColumnName("owner");
-                entity.Property(u => u.Subscriber).HasColumnName("subscriber");
-                                
+                entity.Property(u => u.Subscriber).HasColumnName("subscriber");                              
             });
         }
     }

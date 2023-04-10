@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Biblio_DOMAIN.Entities.DB
 {
-    public class Followers
+    public class Follower
     {
         public int Id { get; set; }
 
