@@ -36,5 +36,11 @@ namespace biblioBack.Controllers
         {
             return await _followersService.AddSubscriber(ownerId, subscriberId);
         }
+
+        [HttpDelete("/users/subscribers")]
+        public async Task<FollowersResponse<bool>> RemoveSubscriberAsync(int ownerId, int subscriberId)
+        {
+            return await _followersService.RemoveSubscriber(ownerId, subscriberId);
+        }
     }
 }
