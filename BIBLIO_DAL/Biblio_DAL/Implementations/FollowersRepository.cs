@@ -23,9 +23,10 @@ namespace Biblio_DAL.Implementations
             await _appDbContext.SaveChangesAsync();
         }
 
-        public Task Delete(Follower entity)
+        public async Task Delete(Follower entity)
         {
-            throw new NotImplementedException();
+            _appDbContext.Remove(entity);
+            await _appDbContext.SaveChangesAsync();
         }
 
         public IQueryable<Follower> GetAll()

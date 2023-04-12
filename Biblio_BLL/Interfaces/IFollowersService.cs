@@ -8,5 +8,7 @@ namespace Biblio_BLL.Interfaces
         Task<FollowersResponse<int[]>> GetSubscribers(int userId);
 
         Task<FollowersResponse<bool>> AddSubscriber(int ownnerId, int subscriberId);
+
+        Task<FollowersResponse<bool>> RemoveSubscriber(int ownerId, int subscriberId);
     }
 }
